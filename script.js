@@ -48,6 +48,19 @@ const modalData = {
         }
     },
     info2: {
+       
+  // DATOS EXCLUSIVOS PARA LOS DOCUMENTOS DE INFO2
+    info2_doc1: {
+        title: "Visualización: Planeamiento con Enfoque DUA",
+        text: "A continuación puede previsualizar el documento técnico completo del Diseño Universal para el Aprendizaje (DUA) aplicado al área de Artes Plásticas:"
+    },
+    info2_doc2: {
+        title: "Visualización: Integración Curricular enfoque STEAM",
+        text: "A continuación puede previsualizar la propuesta metodológica de aula para el desarrollo de proyectos interdisciplinarios STEAM:"
+    },
+       
+       
+       
         title: "Serie: De visita al museo",
         text: "Explora las obras costarricenses en formato audio.",
         image: "img/museo.png",
@@ -121,12 +134,9 @@ function openModal(id, tipo) {
 
     let contenidoHTML = '';
 
-    // RENDERIZADO EXCLUSIVO PARA LOS BOTONES INTERNOS DE INFO1
+    // RENDERIZADO EXCLUSIVO PARA LOS BOTONES INTERNOS DE INFO1 (Mantiene su estructura intacta)
     if (esBotonInfo1) {
-        // Espacio de texto 1
         contenidoHTML += `<p style="text-align: left; color: #333; font-size: 1rem; line-height: 1.5; margin-bottom: 20px;">${data.texto1}</p>`;
-        
-        // Espacio de texto organizado en viñetas con títulos h4
         contenidoHTML += `<ul style="text-align: left; list-style-type: disc; padding-left: 20px; margin-bottom: 25px;">`;
         data.vinetas.forEach((vineta) => {
             contenidoHTML += `
@@ -136,11 +146,7 @@ function openModal(id, tipo) {
                 </li>`;
         });
         contenidoHTML += `</ul>`;
-
-        // Espacio de texto 2 (Otro espacio solo texto)
         contenidoHTML += `<p style="text-align: left; color: #666; font-style: italic; margin-bottom: 25px; border-left: 4px solid #fcda6fff; padding-left: 10px;">${data.texto2}</p>`;
-
-        // Integración de Audio y PDF juntos (área multimedia)
         contenidoHTML += `
             <hr style="border: 1px solid #eee; margin: 20px 0;">
             <div style="display: flex; flex-direction: column; gap: 15px; background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 5px solid #0496ff;">
@@ -157,7 +163,6 @@ function openModal(id, tipo) {
                 </div>
             </div>`;
 
-        // Inyección final en la estructura del modal
         body.innerHTML = `
             <h2 style="color: #01263f; margin-top: 0; text-align: center;">${data.title}</h2>
             <div style="text-align: center; margin: 20px 0;">
@@ -168,24 +173,22 @@ function openModal(id, tipo) {
         `;
 
     } else {
-        // COMPORTAMIENTO ORIGINAL PARA LAS PESTAÑAS info2, info3 e info4
-        if (tipo === 'audios') {
+        // COMPORTAMIENTO PARA SECCIONES COMUNES (info2_doc, info3, info4, info5, info6)
+        if (tipo === 'audios' && data.audios) {
             contenidoHTML = `<h3>Lista de Reproducción</h3><div class="audio-list-modal">`;
             data.audios.forEach((audio) => {
                 contenidoHTML += `
                     <div class="audio-item">
                         <div class="audio-info">
                             <label>${audio.nombre}</label>
-                            <a href="${audio.url}" download="${audio.nombre}.mp3" class="download-audio-btn" title="Descargar audio">
-                            Descargar
-                            </a>
+                            <a href="${audio.url}" download="${audio.nombre}.mp3" class="download-audio-btn" title="Descargar audio">Descargar</a>
                         </div>
                         <audio controls src="${audio.url}"></audio>
                     </div>`;
             });
             contenidoHTML += `</div>`;
         } 
-        else if (tipo === 'pdfs') {
+        else if (tipo === 'pdfs' && data.pdfs) {
             contenidoHTML = `<h3>Documentos descargables</h3><div class="pdf-list-modal">`;
             data.pdfs.forEach((doc) => {
                 contenidoHTML += `
@@ -197,11 +200,19 @@ function openModal(id, tipo) {
             contenidoHTML += `</div>`;
         }
 
-        // CORRECCIÓN DE VISUALIZACIÓN:
-        // Solo si es 'info3' Y además el usuario pidió ver el 'catálogo de audios', mostramos el video interactivo.
-        // Si pide las transcripciones (pdfs), no es necesario saturar con el video arriba.
+        // DETECTOR MULTIMEDIA (Imagen, Video o Documento PDF Incrustado)
         let elementoMultimediaHTML = '';
-        if (id === 'info3' && tipo === 'audios') {
+        
+        if (tipo.endsWith('.pdf')) {
+            // Si el tipo es un PDF, incrustamos el lector responsivo con un botón de respaldo para móviles
+            elementoMultimediaHTML = `
+                <div style="text-align: center; margin: 15px 0; width: 100%;">
+                    <iframe src="${tipo}" style="width: 100%; height: 45vh; border: 1px solid #ccc; border-radius: 8px;" frameborder="0"></iframe>
+                    <div style="margin-top: 10px;">
+                        <a href="${tipo}" target="_blank" class="action-btn" style="display: inline-block; text-decoration: none; padding: 8px 20px; font-size: 0.9rem; background-color: #27ae60;">Abrir PDF en pantalla completa</a>
+                    </div>
+                </div>`;
+        } else if (id === 'info3' && tipo === 'audios') {
             elementoMultimediaHTML = `
                 <div style="text-align: center; margin: 15px 0;">
                     <video controls playsinline src="videos/componente-proyecto.mp4" class="modal-img" style="display: inline-block; max-width: 90%; width: 640px; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);"></video>
@@ -211,21 +222,19 @@ function openModal(id, tipo) {
                 <div style="text-align: center;"><img src="${data.image}" class="modal-img" alt="Miniatura"></div>`;
         }
 
+        let separadorOpcional = contenidoHTML !== '' ? `<hr style="border: 1px solid #fcda6fff; margin: 20px 0;">` : '';
+
         body.innerHTML = `
             <h2 style="color: #01263f; margin-top: 0;">${data.title}</h2>
             ${elementoMultimediaHTML}
             <p>${data.text}</p>
-            <hr style="border: 1px solid #fcda6fff; margin: 20px 0;">
+            ${separadorOpcional}
             ${contenidoHTML}
         `;
     }
 
     modal.style.display = 'flex';
 }
-
-
-
-
 
 
 
