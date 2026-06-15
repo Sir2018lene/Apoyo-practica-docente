@@ -100,6 +100,7 @@ const modalData = {
     }
 };
 
+
 function openModal(id, tipo) {
     // Detectar si el id corresponde a un botón secundario de info1 (ej: 'info1-btn1')
     let data;
@@ -156,7 +157,7 @@ function openModal(id, tipo) {
                 </div>
             </div>`;
 
-        // Inyección final en la estructura del modal (Imagen centrada mediante bloques e inline styles)
+        // Inyección final en la estructura del modal
         body.innerHTML = `
             <h2 style="color: #01263f; margin-top: 0; text-align: center;">${data.title}</h2>
             <div style="text-align: center; margin: 20px 0;">
@@ -167,7 +168,7 @@ function openModal(id, tipo) {
         `;
 
     } else {
-        // COMPORTAMIENTO ORIGINAL INTACTO PARA LAS PESTAÑAS info2, info3 e info4
+        // COMPORTAMIENTO ORIGINAL PARA LAS PESTAÑAS info2, info3 e info4
         if (tipo === 'audios') {
             contenidoHTML = `<h3>Lista de Reproducción</h3><div class="audio-list-modal">`;
             data.audios.forEach((audio) => {
@@ -196,9 +197,23 @@ function openModal(id, tipo) {
             contenidoHTML += `</div>`;
         }
 
+        // CORRECCIÓN DE VISUALIZACIÓN:
+        // Solo si es 'info3' Y además el usuario pidió ver el 'catálogo de audios', mostramos el video interactivo.
+        // Si pide las transcripciones (pdfs), no es necesario saturar con el video arriba.
+        let elementoMultimediaHTML = '';
+        if (id === 'info3' && tipo === 'audios') {
+            elementoMultimediaHTML = `
+                <div style="text-align: center; margin: 15px 0;">
+                    <video controls playsinline src="videos/componente-proyecto.mp4" class="modal-img" style="display: inline-block; max-width: 90%; width: 640px; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);"></video>
+                </div>`;
+        } else {
+            elementoMultimediaHTML = `
+                <div style="text-align: center;"><img src="${data.image}" class="modal-img" alt="Miniatura"></div>`;
+        }
+
         body.innerHTML = `
             <h2 style="color: #01263f; margin-top: 0;">${data.title}</h2>
-            <div style="text-align: center;"><img src="${data.image}" class="modal-img" alt="Miniatura"></div>
+            ${elementoMultimediaHTML}
             <p>${data.text}</p>
             <hr style="border: 1px solid #fcda6fff; margin: 20px 0;">
             ${contenidoHTML}
@@ -208,11 +223,24 @@ function openModal(id, tipo) {
     modal.style.display = 'flex';
 }
 
+
+
+
+
+
+
+
 function closeModal() {
     const modal = document.getElementById('customModal');
     modal.style.display = 'none';
+    
+    // Pausar audios activos
     const audios = modal.querySelectorAll('audio');
     audios.forEach(a => { a.pause(); a.currentTime = 0; });
+
+    // Pausar videos activos si los hay al cerrar
+    const videos = modal.querySelectorAll('video');
+    videos.forEach(v => { v.pause(); v.currentTime = 0; });
 }
 
 function showInfo(event, id) {
