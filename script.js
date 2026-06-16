@@ -3,7 +3,7 @@ const modalData = {
     info1: {
         btn1: {
             title: "Modelo de Mitchel Resnick",
-            image: "img/md-resnick.png",
+            image: "img/img-resnick.png",
             texto1: "La Espiral del Pensamiento Creativo de Mitchel Resnick es un modelo de aprendizaje activo que se basa en experiencias lúdicas y creativas. Este proceso es continuo y se desarrolla a través de los siguientes pasos principales:",
             texto2: "Esta espiral favorece el desarrollo de la creatividad, la expresión, la resolución de problemas y el pensamiento crítico, permitiendo que el aprendizaje artístico sea significativo y centrado en el proceso de exploración y descubrimiento.",
             vinetas: [
@@ -18,7 +18,7 @@ const modalData = {
         },
         btn2: {
             title: "Modelo de Parsons",
-            image: "img/metodologias.png",
+            image: "img/img-Parson.png",
             texto1: "Orientación metodológica utilizada en la educación artística, especialmente en Artes Plásticas, busca fortalecer el aprendizaje estético de las personas estudiantes. Michael Parsons desarrolló una propuesta centrada en la experiencia estética, es decir, en la manera en que las personas observan, interpretan, sienten y valoran las obras de arte.",
             texto2: "De esta manera el arte se convierte en un espacio para desarrollar pensamiento crítico, sensibilidad estética, creatividad y construcción de significado.",
             vinetas: [
