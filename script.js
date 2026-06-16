@@ -36,7 +36,7 @@ const modalData = {
     // DATOS CORREGIDOS Y OPERATIVOS PARA INFO2
     info2_doc1: {
         title: "Visualización: Planeamiento Artes Plásticas",
-        pdfUrl: "txt/4_PLANEAMIENTO_ARTES_PLASTICAS_2026_IITRIMESTRE.pdf",
+        pdfUrl: "txt/PLANEAMIENTO ARTES PLÁSTICAS 2026_IITRIMESTRE.pdf",
         text: "Documento técnico institucional correspondiente al Segundo Trimestre del periodo lectivo 2026."
     },
     info2_doc2: {
@@ -92,13 +92,34 @@ const modalData = {
     }
 };
 
-// Función principal de apertura de Modales
+
+
+
+// ==========================================================================
+// FUNCIÓN PRINCIPAL DE APERTURA Y CONTROL DE MODALES (openModal)
+// ==========================================================================
 function openModal(id, tipo) {
+    const modal = document.getElementById('customModal');
+    const body = document.getElementById('modal-body');
+
+    // CASO ESPECIAL: Vista ampliada de imágenes de la galería (info6) al 60% de la pantalla
+    if (tipo === 'visualizar_imagen') {
+        body.innerHTML = `
+            <h2 style="color: #01263f; margin-top: 0; text-align: center;">Vista Ampliada</h2>
+            <div style="text-align: center; width: 100%; display: flex; justify-content: center; align-items: center;">
+                <img src="${id}" alt="Imagen Ampliada" style="width: 60vw; max-height: 60vh; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            </div>
+        `;
+        modal.style.display = 'flex';
+        return; // Interrumpe la ejecución para evitar leer la base de datos común
+    }
+
     let data;
     let esBotonInfo1 = false;
 
+    // Control de ruteo inteligente de datos según el ID de origen
     if (id.startsWith('info1-')) {
-        const subClave = id.split('-')[1]; 
+        const subClave = id.split('-')[1]; // Extrae 'btn1' o 'btn2'
         data = modalData['info1'][subClave];
         esBotonInfo1 = true;
     } else {
@@ -107,11 +128,9 @@ function openModal(id, tipo) {
 
     if (!data) return;
 
-    const modal = document.getElementById('customModal');
-    const body = document.getElementById('modal-body');
     let contenidoHTML = '';
 
-    // Estructura Diferenciada Premium para INFO1
+    // RENDERIZADO EXCLUSIVO PREMIUM PARA LOS BOTONES INTERNOS DE INFO1
     if (esBotonInfo1) {
         contenidoHTML += `<p style="text-align: left; color: #333; font-size: 1rem; line-height: 1.5; margin-bottom: 20px;">${data.texto1}</p>`;
         contenidoHTML += `<ul style="text-align: left; list-style-type: disc; padding-left: 20px; margin-bottom: 25px;">`;
@@ -143,14 +162,14 @@ function openModal(id, tipo) {
         body.innerHTML = `
             <h2 style="color: #01263f; margin-top: 0; text-align: center;">${data.title}</h2>
             <div style="text-align: center; margin: 20px 0;">
-                <img src="${data.image}" class="modal-img" alt="Miniatura" style="display: inline-block; max-width: 90%; height: auto; border-radius: 10px;">
+                <img src="${data.image}" class="modal-img" alt="Miniatura de la sección" style="display: inline-block; max-width: 90%; height: auto; border-radius: 10px;">
             </div>
             <hr style="border: 1px solid #fcda6fff; margin: 20px 0;">
             ${contenidoHTML}
         `;
 
     } else {
-        // Estructura Dinámica para el Resto de las Pestañas
+        // RENDERIZADO ESTÁNDAR PARA COMPONENTES DE LISTADOS (AUDIOS / TRANCRIPCIONES)
         if (tipo === 'audios' && data.audios) {
             contenidoHTML = `<h3>Lista de Reproducción</h3><div class="audio-list-modal">`;
             data.audios.forEach((audio) => {
@@ -177,7 +196,7 @@ function openModal(id, tipo) {
             contenidoHTML += `</div>`;
         }
 
-        // Caso Exclusivo de Visualización Integrada de Documentos PDF (Pestaña INFO2)
+        // INYECTOR DE ELEMENTO MULTIMEDIA PRINCIPAL (Imagen estática o Visor Iframe PDF)
         let elementoMultimediaHTML = '';
         if (tipo === 'visualizar_pdf') {
             elementoMultimediaHTML = `
@@ -195,9 +214,9 @@ function openModal(id, tipo) {
         let separadorOpcional = contenidoHTML !== '' ? `<hr style="border: 1px solid #fcda6fff; margin: 20px 0;">` : '';
 
         body.innerHTML = `
-            <h2 style="color: #01263f; margin-top: 0; text-align:center;">${data.title}</h2>
+            <h2 style="color: #01263f; margin-top: 0; text-align: center;">${data.title}</h2>
             ${elementoMultimediaHTML}
-            <p style="margin-top:15px; color:#555;">${data.text}</p>
+            <p style="margin-top: 15px; color: #555;">${data.text}</p>
             ${separadorOpcional}
             ${contenidoHTML}
         `;
@@ -206,19 +225,25 @@ function openModal(id, tipo) {
     modal.style.display = 'flex';
 }
 
-// Cierre Seguro de Modales y Reseteo Multimedia
+// ==========================================================================
+// FUNCIÓN DE CIERRE SEGURO Y LIMPIEZA MULTIMEDIA (closeModal)
+// ==========================================================================
 function closeModal() {
     const modal = document.getElementById('customModal');
     modal.style.display = 'none';
     
+    // Pausar y resetear pistas de audio activas dentro del modal
     const audios = modal.querySelectorAll('audio');
     audios.forEach(a => { a.pause(); a.currentTime = 0; });
 
+    // Pausar y resetear pistas de video activas si las hubiera
     const videos = modal.querySelectorAll('video');
     videos.forEach(v => { v.pause(); v.currentTime = 0; });
 }
 
-// Control Navegación de Pestañas Horizontales
+// ==========================================================================
+// CONTROL INTERACTIVO DE PESTAÑAS PRINCIPALES (showInfo)
+// ==========================================================================
 function showInfo(event, id) {
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(content => content.classList.remove('show'));
@@ -230,8 +255,12 @@ function showInfo(event, id) {
     event.currentTarget.classList.add('active');
 }
 
-// Cierre al hacer clic fuera del recuadro blanco
+// ==========================================================================
+// EVENTOS ADICIONALES DE CIERRE PERIMETRAL
+// ==========================================================================
 window.onclick = function(event) {
     const modal = document.getElementById('customModal');
-    if (event.target == modal) closeModal();
-}
+    if (event.target == modal) {
+        closeModal();
+    }
+};
