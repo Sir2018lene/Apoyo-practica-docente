@@ -1,12 +1,11 @@
-// Base de datos que incluye ahora la configuración detallada e independiente para cada botón de info1
+// Base de datos unificada sin duplicaciones
 const modalData = {
     info1: {
-        // Sub-configuración para cada uno de los botones internos de la columna derecha de info1
         btn1: {
             title: "Modelo de Mitchel Resnick",
             image: "img/md-resnick.png",
             texto1: "La Espiral del Pensamiento Creativo de Mitchel Resnick es un modelo de aprendizaje activo que se basa en experiencias lúdicas y creativas. Este proceso es continuo y se desarrolla a través de los siguientes pasos principales:",
-            texto2: "Esta espiral favorece el desarrollo de la creatividad, la expresión, la resolución de problemas y el pensamiento crítico, permitiendo que el aprendizaje artístico sea significativo y centrado en el proceso de exploración y descubrimiento. Asimismo, este proceso se caracteriza por ser flexible y dinámico, por lo que el orden de sus etapas puede variar según la intención pedagógica, las necesidades del grupo y el proceso creativo propuesto por la persona docente.",
+            texto2: "Esta espiral favorece el desarrollo de la creatividad, la expresión, la resolución de problemas y el pensamiento crítico, permitiendo que el aprendizaje artístico sea significativo y centrado en el proceso de exploración y descubrimiento.",
             vinetas: [
                 { titulo: "Imaginar", desc: "El proceso inicia cuando las personas estudiantes imaginan ideas iniciales para sus proyectos." },
                 { titulo: "Crear", desc: "Las ideas se materializan al crear producciones, como obras artísticas." },
@@ -20,107 +19,86 @@ const modalData = {
         btn2: {
             title: "Modelo de Parsons",
             image: "img/metodologias.png",
-            texto1: "Orientación metodológica utilizada en la educación artística, especialmente en Artes Plásticas, busca fortalecer el aprendizaje estético de las personas estudiantes.<p>Esta propuesta se fundamenta en el pensamiento pragmático y en las teorías del desarrollo cognitivo de autores como Jean Piaget y Lawrence Kohlberg, quienes estudiaron cómo las personas construyen conocimiento y desarrollan formas de pensamiento conforme crecen y adquieren experiencias.A partir de estas bases, Michael Parsons desarrolló una propuesta centrada en la experiencia estética, es decir, en la manera en que las personas observan, interpretan, sienten y valoran las obras de arte.</p> <p>Su planteamiento indica que la comprensión artística no ocurre de manera inmediata, sino que evoluciona progresivamente mediante distintas etapas de desarrollo. Desde esta perspectiva, la educación artística no se limita únicamente a “hacer dibujos” o producir obras, sino que busca que las personas estudiantes aprendan a observar, reflexionar, interpretar y expresar ideas y emociones por medio del arte. </p> <p>Parsons plantea que las personas atraviesan diferentes fases en la manera de comprender el arte. Cada etapa refleja un nivel más complejo de interpretación y apreciación estética.En el Programa de Estudio de Artes Plásticas se retoman cinco fases propuestas por Parsons y se agrega una fase integradora final:",
+            texto1: "Orientación metodológica utilizada en la educación artística, especialmente en Artes Plásticas, busca fortalecer el aprendizaje estético de las personas estudiantes. Michael Parsons desarrolló una propuesta centrada en la experiencia estética, es decir, en la manera en que las personas observan, interpretan, sienten y valoran las obras de arte.",
             texto2: "De esta manera el arte se convierte en un espacio para desarrollar pensamiento crítico, sensibilidad estética, creatividad y construcción de significado.",
             vinetas: [
-                { titulo: "Favoritismo", desc: "Las niñas y los niños valoran una obra según lo que más les gusta visualmente. Predominan los colores llamativos, personajes conocidos o elementos agradables para ellos." },
-                { titulo: "Belleza y realismo", desc: "La valoración se centra en qué tan “bonita” o “real” parece la obra. Se considera importante que el dibujo se parezca a la realidad." },
-                { titulo: "Expresividad", desc: "Las personas estudiantes comienzan a identificar emociones, sentimientos e intenciones dentro de la obra." },
-                { titulo: "Estilo y forma", desc: "Se reconoce que existen distintas maneras de hacer arte. Se analizan técnicas, estilos, materiales y formas de expresión." },
-                { titulo: "Juicio crítico", desc: "La persona logra argumentar y valorar una obra considerando contexto, intención, significado y aspectos culturales." },
-                { titulo: "Fase integradora", desc: "Integra todas las fases anteriores. La persona puede observar una obra desde múltiples perspectivas: estética, técnica, emocional, cultural y crítica." }
+                { titulo: "Favoritismo", desc: "Las niñas y los niños valoran una obra según lo que más les gusta visualmente." },
+                { titulo: "Belleza y realismo", desc: "La valoración se centra en qué tan 'bonita' o 'real' parece la obra." },
+                { titulo: "Expresividad", desc: "Las personas estudiantes comienzan a identificar emociones, sentimientos e intenciones." },
+                { titulo: "Estilo y forma", desc: "Se reconoce que existen distintas maneras de hacer arte. Se analizan técnicas y materiales." },
+                { titulo: "Juicio crítico", desc: "La persona logra argumentar considerando contexto, intención y significado." },
+                { titulo: "Fase integradora", desc: "Integra todas las fases anteriores desde múltiples perspectivas." }
             ],
             audio: { nombre: "Audio Guía: Estrategias Metodológicas", url: "audios/modelo/podcast-metodologias.mp3" },
             pdf: { nombre: "Manual de Estrategias Didácticas PDF", url: "txt/manual-metodologias.pdf" }
-        },
-        btn3: {
-            title: "Desarrollo de Competencias Clave",
-            image: "img/competencias.png",
-            texto1: "Se definen los criterios de desempeño esenciales para potenciar las habilidades técnicas, creativas y conceptuales del estudiantado de acuerdo con los estándares actuales.",
-            texto2: "La evaluación formativa es clave para medir el progreso de estas competencias a lo largo del periodo lectivo.",
-            vinetas: [
-                { titulo: "Resolución Creativa", desc: "Capacidad de encontrar soluciones originales a retos visuales planteados." },
-                { titulo: "Comunicación Estética", desc: "Uso adecuado del lenguaje visual para transmitir ideas, emociones y narrativas." },
-                { titulo: "Dominio Técnico", desc: "Destreza progresiva en el manejo de materiales, herramientas y soportes artísticos." }
-            ],
-            audio: { nombre: "Audio Guía: Criterios y Competencias", url: "audios/modelo/podcast-competencias.mp3" },
-            pdf: { nombre: "Matriz de Competencias del Programa", url: "txt/matriz-competencias.pdf" }
         }
     },
-    info2: {
-       
-  // DATOS EXCLUSIVOS PARA LOS DOCUMENTOS DE INFO2
+    // DATOS CORREGIDOS Y OPERATIVOS PARA INFO2
     info2_doc1: {
-        title: "Visualización: Planeamiento con Enfoque DUA",
-        text: "A continuación puede previsualizar el documento técnico completo del Diseño Universal para el Aprendizaje (DUA) aplicado al área de Artes Plásticas:"
+        title: "Visualización: Planeamiento Artes Plásticas",
+        pdfUrl: "txt/4_PLANEAMIENTO_ARTES_PLASTICAS_2026_IITRIMESTRE.pdf",
+        text: "Documento técnico institucional correspondiente al Segundo Trimestre del periodo lectivo 2026."
     },
     info2_doc2: {
-        title: "Visualización: Integración Curricular enfoque STEAM",
-        text: "A continuación puede previsualizar la propuesta metodológica de aula para el desarrollo de proyectos interdisciplinarios STEAM:"
+        title: "Visualización: Plantilla de Planeamiento Correlacionado",
+        pdfUrl: "txt/Planeamiento_Correlacionado_AP.pdf",
+        text: "Matriz pedagógica de correlación de contenidos curriculares del programa."
     },
-       
-       
-       
-        title: "Serie: De visita al museo",
-        text: "Explora las obras costarricenses en formato audio.",
-        image: "img/museo.png",
-        audios: [
-            { nombre: "Figura Humana", url: "audios/museo/podcast-figura-humana.mp3", descripcion: "Descubre el arte de la época precolombina en el siguiente pódcast" },
-            { nombre: "Virgen María", url: "audios/museo/podcast-virgen-maria.mp3", descripcion: "Conoce más acerca del Arte colonial costarricense con el pódcast." },
-            { nombre: "Doña Petronila", url: "audios/museo/podcast-dona-petronila.mp3", descripcion: "Una nuevo estilo de retrato es lo que encontratarás en el siguiente pódcast." },
-            { nombre: "Leona María", url: "audios/museo/podcast-leona-maria.mp3", descripcion: "La belleza natural costarricense representada a través del Arte, conocela en el siguiente pódcast." },
-            { nombre: "Símbolos Patrios", url: "audios/museo/podcast-simbolos-patrios.mp3", descripcion: "Arte contemporáneo costarricense, conocelo en el siguiente pódcast." }
-        ],
-        pdfs: [
-            { nombre: "Transcripción Figura humana", url: "txt/podcast-figura-humana.pdf" },
-            { nombre: "Transcripción Virgen María", url: "txt/podcast-virgen-maria.pdf" },
-            { nombre: "Transcripción Doña Petronila", url: "txt/podcast-doña-petronila.pdf" },
-            { nombre: "Transcripción Leona María", url: "txt/podcast-leona-maria.pdf" },
-            { nombre: "Transcripción Símbolos patrios", url: "txt/podcast-simbolos-patrios.pdf" }
-        ]
-    },
+    // SECCIONES GENERALES CON LISTADOS DE AUDIOS Y DOCUMENTOS
     info3: {
-        title: "Serie: La alegría de leer",
-        text: "Fragmentos narrados para fomentar el hábito lector.",
-        image: "img/alegria.png",
+        title: "Componente de Proyecto",
+        text: "Explore las guías de apoyo auditivo y las transcripciones oficiales del componente práctico de aula.",
+        image: "img/componente-proyecto.png",
         audios: [
-            { nombre: "Anancy y el docunu", url: "audios/alegria/AnancyDocunu.mp3" },
-            { nombre: "Sibö y los sapitos traviesos", url: "audios/alegria/SiboSapitosTraviesos.mp3" }
+            { nombre: "Introducción al Componente Proyecto", url: "audios/proyecto/audio1.mp3" },
+            { nombre: "Fases de Desarrollo Técnico", url: "audios/proyecto/audio2.mp3" }
         ],
         pdfs: [
-            { nombre: "Transcripción Anancy y el docunu", url: "txt/podcast-AnancyDocunu.pdf" },
-            { nombre: "Transcripción Sibö y los sapitos traviesos", url: "txt/podcast-SiboSapitosTraviesos.pdf" }
+            { nombre: "Guía Operativa de Proyectos.pdf", url: "txt/proyecto-guia.pdf" }
         ]
     },
     info4: {
-        title: "Serie: Antología BEYCRA 2024",
-        text: "Antología de participaciones estudiantiles destacadas.",
+        title: "Serie: Antología BEYCRA",
+        text: "Antología de participaciones estudiantiles destacadas e integración curricular.",
         image: "img/antologia.png",
         audios: [
-            { nombre: "El sentir de los siento", url: "audios/antologia/ElSentirSiento.mp3" },
-            { nombre: "Historia de Texas el perro", url: "audios/antologia/HistoriaTexasPerro.mp3" },
-            { nombre: "Lágrimas pasadas", url: "audios/antologia/LagrimasPasadas.mp3" },
-            { nombre: "El lienzo de Iris", url: "audios/antologia/LienzoIris.mp3" },
-            { nombre: "Un monstruo debajo la cama", url: "audios/antologia/UnMonstruoDebajoCama.mp3" }
+            { nombre: "El sentir de los siento", url: "audios/antologia/ElSentirSiento.mp3" }
         ],
         pdfs: [
-            { nombre: "Transcripción El sentir de los siento", url: "txt/Version texto-El sentir de los siento.pdf" },
-            { nombre: "Transcripción La historia de Texas el perro", url: "txt/Version texto-La historia del Texas el perro.pdf" },
-            { nombre: "Transcripción Lágrimas pasadas", url: "txt/Version texto-Lagrimas pasadas.pdf" },
-            { nombre: "Transcripción El lienzo de Iris", url: "txt/Version texto-El lienzo de Iris.pdf" },
-            { nombre: "Transcripción Un monstruo debajo la cama", url: "txt/Version texto-Un monstruo debajo la cama.pdf" }
+            { nombre: "Transcripción El sentir de los siento.pdf", url: "txt/Version_texto-El_sentir_de_los_siento.pdf" }
+        ]
+    },
+    info5: {
+        title: "Flexibilidad Curricular",
+        text: "Estrategias de flexibilización y apoyo didáctico complementario.",
+        image: "img/museo.png",
+        audios: [
+            { nombre: "Criterios de Flexibilidad", url: "audios/cultural/audio1.mp3" }
+        ],
+        pdfs: [
+            { nombre: "Estrategias de Aula.pdf", url: "txt/plan-cultural.pdf" }
+        ]
+    },
+    info6: {
+        title: "Buenas prácticas docentes",
+        text: "Recopilación de experiencias pedagógicas memorables compartidas por los docentes.",
+        image: "img/alegria.png",
+        audios: [
+            { nombre: "Socialización de Experiencias", url: "audios/practicas/audio1.mp3" }
+        ],
+        pdfs: [
+            { nombre: "Memoria de Buenas Prácticas.pdf", url: "txt/buenas-practicas.pdf" }
         ]
     }
 };
 
-
+// Función principal de apertura de Modales
 function openModal(id, tipo) {
-    // Detectar si el id corresponde a un botón secundario de info1 (ej: 'info1-btn1')
     let data;
     let esBotonInfo1 = false;
 
     if (id.startsWith('info1-')) {
-        const subClave = id.split('-')[1]; // Extrae 'btn1', 'btn2', etc.
+        const subClave = id.split('-')[1]; 
         data = modalData['info1'][subClave];
         esBotonInfo1 = true;
     } else {
@@ -131,10 +109,9 @@ function openModal(id, tipo) {
 
     const modal = document.getElementById('customModal');
     const body = document.getElementById('modal-body');
-
     let contenidoHTML = '';
 
-    // RENDERIZADO EXCLUSIVO PARA LOS BOTONES INTERNOS DE INFO1 (Mantiene su estructura intacta)
+    // Estructura Diferenciada Premium para INFO1
     if (esBotonInfo1) {
         contenidoHTML += `<p style="text-align: left; color: #333; font-size: 1rem; line-height: 1.5; margin-bottom: 20px;">${data.texto1}</p>`;
         contenidoHTML += `<ul style="text-align: left; list-style-type: disc; padding-left: 20px; margin-bottom: 25px;">`;
@@ -166,14 +143,14 @@ function openModal(id, tipo) {
         body.innerHTML = `
             <h2 style="color: #01263f; margin-top: 0; text-align: center;">${data.title}</h2>
             <div style="text-align: center; margin: 20px 0;">
-                <img src="${data.image}" class="modal-img" alt="Miniatura de la sección" style="display: inline-block; max-width: 90%; height: auto; border-radius: 10px;">
+                <img src="${data.image}" class="modal-img" alt="Miniatura" style="display: inline-block; max-width: 90%; height: auto; border-radius: 10px;">
             </div>
             <hr style="border: 1px solid #fcda6fff; margin: 20px 0;">
             ${contenidoHTML}
         `;
 
     } else {
-        // COMPORTAMIENTO PARA SECCIONES COMUNES (info2_doc, info3, info4, info5, info6)
+        // Estructura Dinámica para el Resto de las Pestañas
         if (tipo === 'audios' && data.audios) {
             contenidoHTML = `<h3>Lista de Reproducción</h3><div class="audio-list-modal">`;
             data.audios.forEach((audio) => {
@@ -181,7 +158,7 @@ function openModal(id, tipo) {
                     <div class="audio-item">
                         <div class="audio-info">
                             <label>${audio.nombre}</label>
-                            <a href="${audio.url}" download="${audio.nombre}.mp3" class="download-audio-btn" title="Descargar audio">Descargar</a>
+                            <a href="${audio.url}" download="${audio.nombre}.mp3" class="download-audio-btn" style="background-color:#01263f; color:white; padding: 2px 8px; font-size:0.8rem; text-decoration:none; border-radius:4px;">Descargar</a>
                         </div>
                         <audio controls src="${audio.url}"></audio>
                     </div>`;
@@ -200,22 +177,15 @@ function openModal(id, tipo) {
             contenidoHTML += `</div>`;
         }
 
-        // DETECTOR MULTIMEDIA (Imagen, Video o Documento PDF Incrustado)
+        // Caso Exclusivo de Visualización Integrada de Documentos PDF (Pestaña INFO2)
         let elementoMultimediaHTML = '';
-        
-        if (tipo.endsWith('.pdf')) {
-            // Si el tipo es un PDF, incrustamos el lector responsivo con un botón de respaldo para móviles
+        if (tipo === 'visualizar_pdf') {
             elementoMultimediaHTML = `
                 <div style="text-align: center; margin: 15px 0; width: 100%;">
-                    <iframe src="${tipo}" style="width: 100%; height: 45vh; border: 1px solid #ccc; border-radius: 8px;" frameborder="0"></iframe>
-                    <div style="margin-top: 10px;">
-                        <a href="${tipo}" target="_blank" class="action-btn" style="display: inline-block; text-decoration: none; padding: 8px 20px; font-size: 0.9rem; background-color: #27ae60;">Abrir PDF en pantalla completa</a>
+                    <iframe src="${data.pdfUrl}" style="width: 100%; height: 48vh; border: 1px solid #ccc; border-radius: 8px;" frameborder="0"></iframe>
+                    <div style="margin-top: 12px;">
+                        <a href="${data.pdfUrl}" target="_blank" class="action-btn" style="display: inline-block; text-decoration: none; padding: 8px 20px; font-size: 0.9rem; background-color: #27ae60; color: white; border-radius: 5px; font-weight: bold;">Abrir PDF en ventana completa</a>
                     </div>
-                </div>`;
-        } else if (id === 'info3' && tipo === 'audios') {
-            elementoMultimediaHTML = `
-                <div style="text-align: center; margin: 15px 0;">
-                    <video controls playsinline src="videos/componente-proyecto.mp4" class="modal-img" style="display: inline-block; max-width: 90%; width: 640px; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);"></video>
                 </div>`;
         } else {
             elementoMultimediaHTML = `
@@ -225,9 +195,9 @@ function openModal(id, tipo) {
         let separadorOpcional = contenidoHTML !== '' ? `<hr style="border: 1px solid #fcda6fff; margin: 20px 0;">` : '';
 
         body.innerHTML = `
-            <h2 style="color: #01263f; margin-top: 0;">${data.title}</h2>
+            <h2 style="color: #01263f; margin-top: 0; text-align:center;">${data.title}</h2>
             ${elementoMultimediaHTML}
-            <p>${data.text}</p>
+            <p style="margin-top:15px; color:#555;">${data.text}</p>
             ${separadorOpcional}
             ${contenidoHTML}
         `;
@@ -236,31 +206,31 @@ function openModal(id, tipo) {
     modal.style.display = 'flex';
 }
 
-
-
-
+// Cierre Seguro de Modales y Reseteo Multimedia
 function closeModal() {
     const modal = document.getElementById('customModal');
     modal.style.display = 'none';
     
-    // Pausar audios activos
     const audios = modal.querySelectorAll('audio');
     audios.forEach(a => { a.pause(); a.currentTime = 0; });
 
-    // Pausar videos activos si los hay al cerrar
     const videos = modal.querySelectorAll('video');
     videos.forEach(v => { v.pause(); v.currentTime = 0; });
 }
 
+// Control Navegación de Pestañas Horizontales
 function showInfo(event, id) {
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(content => content.classList.remove('show'));
+    
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
+    
     document.getElementById(id).classList.add('show');
     event.currentTarget.classList.add('active');
 }
 
+// Cierre al hacer clic fuera del recuadro blanco
 window.onclick = function(event) {
     const modal = document.getElementById('customModal');
     if (event.target == modal) closeModal();
