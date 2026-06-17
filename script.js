@@ -46,15 +46,12 @@ const modalData = {
     },
     // SECCIONES GENERALES CON LISTADOS DE AUDIOS Y DOCUMENTOS
     info3: {
-        title: "Componente de Proyecto",
-        text: "Explore las guías de apoyo auditivo y las transcripciones oficiales del componente práctico de aula.",
+        title: "El componente de Proyecto en la clase de Artes Plásticas",
+        text: "El componente Proyecto en la asignatura de Artes Plásticas para I y II Ciclo.",
         image: "img/componente-proyecto.png",
-        audios: [
-            { nombre: "Introducción al Componente Proyecto", url: "audios/proyecto/audio1.mp3" },
-            { nombre: "Fases de Desarrollo Técnico", url: "audios/proyecto/audio2.mp3" }
-        ],
+     
         pdfs: [
-            { nombre: "Guía Operativa de Proyectos.pdf", url: "txt/proyecto-guia.pdf" }
+            { nombre: "Orientaciones para el desarrollo y evaluación del componente Proyecto", url: "txt/El proyecto I y II Ciclos Versión Diagramado.pdf" }
         ]
     },
    // DATOS PARA INFO4
