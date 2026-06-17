@@ -57,17 +57,24 @@ const modalData = {
             { nombre: "Guía Operativa de Proyectos.pdf", url: "txt/proyecto-guia.pdf" }
         ]
     },
-    info4: {
-        title: "Serie: Antología BEYCRA",
-        text: "Antología de participaciones estudiantiles destacadas e integración curricular.",
-        image: "img/antologia.png",
-        audios: [
-            { nombre: "El sentir de los siento", url: "audios/antologia/ElSentirSiento.mp3" }
-        ],
-        pdfs: [
-            { nombre: "Transcripción El sentir de los siento.pdf", url: "txt/Version_texto-El_sentir_de_los_siento.pdf" }
-        ]
+   // DATOS PARA INFO4
+    info4_doc1: {
+        title: "Visualización: Planeamiento Correlacionado de Artes Plásticas",
+        pdfUrl: "txt/Planeamiento Correlacionado AP.pdf",
+        text: "Documento técnico institucional correspondiente al Segundo Trimestre del periodo lectivo 2026."
     },
+    info4_doc2: {
+        title: "Visualización: Orientaciones para escuelas unidocentes. ",
+        pdfUrl: "txt/Orientaciones Unidocentes AP.pdf",
+        text: "Matriz pedagógica de correlación de contenidos curriculares del programa."
+    }, 
+
+     info4_doc3: {
+        title: "Visualización: Cartel de alcance y secuencia para escuelas unidocentes",
+        pdfUrl: "txt/CARTEL DE ALCANCE Y SECUENCIA ARTES PLASTICAS (2).pdf",
+        text: "Matriz pedagógica de correlación de contenidos curriculares del programa."
+    },
+
     info5: {
         title: "Flexibilidad Curricular",
         text: "Estrategias de flexibilización y apoyo didáctico complementario.",

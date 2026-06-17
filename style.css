@@ -20,7 +20,7 @@ html, body {
 .main-header {
     display: flex;
     width: 100%;
-    background: #ebe3dede;
+    background: #ebe3deec;
     border-bottom: 5px solid #f5f4f3;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     flex-shrink: 0;
@@ -181,13 +181,13 @@ html, body {
 }
 
 .info-box {
-    background: #f0edeb;
+    background: #ffffff;
     border-radius: 10px;
     text-align: left;
     flex: 1;
     overflow-y: auto; 
     padding: 30px;
-    border: 15px solid rgb(248, 248, 246);
+    border: 15px solid #ebe3de;
     width: 100%; 
 }
 
